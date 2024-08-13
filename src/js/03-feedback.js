@@ -1,5 +1,6 @@
 "use strict";
-import lodash from "lodash.throttle";
+import throttle from 'lodash.throttle';
+// const throttle = require('lodash.throttle');
 
 let emailInput = document.querySelector(`input[name=email]`);
 let messageInput = document.querySelector(`textarea[name=message]`);
@@ -9,8 +10,8 @@ emailInput.addEventListener("input", updateValue);
 messageInput.addEventListener("input", updateValue);
 let email =  emailInput.textContent;
 let message =  messageInput.textContent;
-
-
+    
+ document.addEventListener('input', _.throttle(handleThrottling, 60000));
  
 function updateValue(e) {
     if (e.target === emailInput ) {
@@ -20,20 +21,16 @@ function updateValue(e) {
  }
     let data = `${email}, ${message}`; 
     localStorage.setItem("feedback-form-state", data);
-
-    throt_fun();
 };
 
-let throt_fun = _.throttle(updateValue(), 500);
 
-//
+window.addEventListener('DOMContentLoaded', pageRefresh);
+
 function pageRefresh() {
     let nameFromLocalStorage = localStorage.getItem("feedback-form-state");
-    let array = nameFromLocalStorage.split(",");
-    
-    if(localStorage) {
-    email.textContent = array[0];
-    message.textContent = array[1];
-    }
-};
+    let array = nameFromLocalStorage.split(" "); 
+    email = array[0];
+    message = array[1];
+    };
 
+pageRefresh();
