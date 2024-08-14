@@ -80,7 +80,9 @@ form.addEventListener("submit", (event) => {
       localStorage.removeItem("feedback-form-state");
 
     }
+
   });
 
-  const throttled = _.throttle(updateValue, 600000, { 'trailing': false });
-  jQuery(form).on('input', throttled);
+  
+  let throttled = _.throttle(addTaskToLocalStorage (), 50000);
+  window.setTimeout(throttled, 10); window.setTimeout(throttled, 30);
