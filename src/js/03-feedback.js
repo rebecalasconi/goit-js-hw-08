@@ -80,9 +80,6 @@ form.addEventListener("submit", (event) => {
       localStorage.removeItem("feedback-form-state");
 
     }
-
+    const throttledFetchData = _.throttle(event, 500000);
+    form.addEventListener("input", throttledFetchData);
   });
-
-  
-  let throttled = _.throttle(addTaskToLocalStorage (), 50000);
-  window.setTimeout(throttled, 10); window.setTimeout(throttled, 30);
