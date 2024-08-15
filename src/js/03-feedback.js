@@ -1,6 +1,5 @@
 "use strict";
 import throttle from 'lodash.throttle';
-// const throttle = require('lodash.throttle');
 
 let emailInput = document.querySelector(`input[name=email]`);
 let messageInput = document.querySelector(`textarea[name=message]`);
@@ -80,6 +79,8 @@ form.addEventListener("submit", (event) => {
       localStorage.removeItem("feedback-form-state");
 
     }
-    const throttledFetchData = _.throttle(addTaskToLocalStorage, 50000);
+    const throttledFetchData = _.throttle(addTaskToLocalStorage, 5000);
     form.addEventListener("input", throttledFetchData);
   });
+
+const throttledOnKeyDown = _.throttle(addTaskToLocalStorage, 50000);
