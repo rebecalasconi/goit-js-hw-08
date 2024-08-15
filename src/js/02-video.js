@@ -20,4 +20,12 @@ player.on('timeupdate', function(data) {
 let storageTime = localStorage.getItem('videoplayer-current-time');
 let javasTime = JSON.parse(storageTime);
 
-
+player.setCurrentTime(javasTime).then(function(seconds) {
+}).catch(function(error) {
+    switch (error.name) {
+        case 'RangeError':
+            break;
+        default:
+            break;
+    }
+});
