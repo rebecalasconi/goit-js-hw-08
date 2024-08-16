@@ -83,4 +83,4 @@ form.addEventListener("submit", (event) => {
     form.addEventListener("input", throttledFetchData);
   });
 
-const throttledOnKeyDown = _.throttle(addTaskToLocalStorage, 50000);
+const throttledOnKeyDown = _.throttle(addTaskToLocalStorage, 40000);
